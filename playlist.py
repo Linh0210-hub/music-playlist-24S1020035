@@ -34,3 +34,14 @@ def main():
 
 if __name__ == "__main__":
     main()
+def view_playlist():
+    """
+    Hiển thị toàn bộ bài hát trong danh sách songs.
+    """
+    if not songs:
+        print("Danh sách phát hiện đang trống.")
+        return
+    
+    print("=== Danh sách phát ===")
+    for i, song in enumerate(songs, start=1):
+        print(f"{i}. {song['title']} - {song['artist']} ({song['duration']} giây)")
