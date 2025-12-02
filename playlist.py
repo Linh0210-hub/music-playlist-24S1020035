@@ -67,3 +67,16 @@ def main():
 
 if __name__ == "__main__":
     main()
+def search_by_artist():
+    """
+    Tìm bài hát theo ca sĩ.
+    """
+    artist_name = input("Nhập tên ca sĩ muốn tìm: ")
+    found = [song for song in songs if song['artist'].lower() == artist_name.lower()]
+    
+    if not found:
+        print(f"Không tìm thấy bài hát nào của ca sĩ {artist_name}.")
+    else:
+        print(f"Bài hát của {artist_name}:")
+        for i, song in enumerate(found, start=1):
+            print(f"{i}. {song['title']} ({song['duration']} giây)")
