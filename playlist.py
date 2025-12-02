@@ -1,13 +1,47 @@
-# Danh sách bài hát (toàn cục)songs = []
+# Danh sách bài hát (toàn cục)
 songs = []
 def add_song():
-    print("Chức năng thêm bài hát chưa được triển khai.")
+    """
+    Nhập tên bài hát, ca sĩ và thời lượng, thêm vào danh sách songs.
+    """
+    title = input("Nhập tên bài hát: ")
+    artist = input("Nhập tên ca sĩ: ")
+    while True:
+        try:
+            duration = int(input("Nhập thời lượng bài hát (giây): "))
+            break
+        except ValueError:
+            print("Vui lòng nhập số nguyên cho thời lượng.")
+    
+    song = {'title': title, 'artist': artist, 'duration': duration}
+    songs.append(song)
+    print(f"Đã thêm bài hát: {title} - {artist} ({duration} giây)")
 
 def view_playlist():
-    print("Chức năng xem danh sách phát chưa được triển khai.")
+    """
+    Hiển thị toàn bộ bài hát trong danh sách songs.
+    """
+    if not songs:
+        print("Danh sách phát hiện đang trống.")
+        return
+    
+    print("=== Danh sách phát ===")
+    for i, song in enumerate(songs, start=1):
+        print(f"{i}. {song['title']} - {song['artist']} ({song['duration']} giây)")
 
 def search_by_artist():
-    print("Chức năng tìm theo ca sĩ chưa được triển khai.")
+    """
+    Tìm bài hát theo ca sĩ.
+    """
+    artist_name = input("Nhập tên ca sĩ muốn tìm: ")
+    found = [song for song in songs if song['artist'].lower() == artist_name.lower()]
+    
+    if not found:
+        print(f"Không tìm thấy bài hát nào của ca sĩ {artist_name}.")
+    else:
+        print(f"Bài hát của {artist_name}:")
+        for i, song in enumerate(found, start=1):
+            print(f"{i}. {song['title']} ({song['duration']} giây)")
 
 def main():
     while True:
@@ -30,23 +64,6 @@ def main():
             break
         else:
             print("Lựa chọn không hợp lệ.")
-            
 
 if __name__ == "__main__":
     main()
-# Danh sách toàn cục lưu bài hát
-songs = []
-def add_song(title, artist, duration):
-    """
-    Thêm một bài hát vào danh sách songs.
-    :param title: Tên bài hát (str)
-    :param artist: Tên ca sĩ (str)
-    :param duration: Thời lượng bài hát (giây) (int)
-    """
-    song = {
-        'title': title,
-        'artist': artist,
-        'duration': duration
-    }
-    songs.append(song)
-    print(f"Đã thêm bài hát: {title} - {artist}, thời lượng {duration} giây.")
