@@ -34,3 +34,19 @@ def main():
 
 if __name__ == "__main__":
     main()
+# Danh sách toàn cục lưu bài hát
+songs = []
+def add_song(title, artist, duration):
+    """
+    Thêm một bài hát vào danh sách songs.
+    :param title: Tên bài hát (str)
+    :param artist: Tên ca sĩ (str)
+    :param duration: Thời lượng bài hát (giây) (int)
+    """
+    song = {
+        'title': title,
+        'artist': artist,
+        'duration': duration
+    }
+    songs.append(song)
+    print(f"Đã thêm bài hát: {title} - {artist}, thời lượng {duration} giây.")
